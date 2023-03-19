@@ -1,25 +1,27 @@
 from selenium import webdriver
 import time
 import json
+from constants import USERNAME, PASSWORD
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-USERNAME = "nikicas443@gmail.com" # YOUR-EMAIL
-PASSWORD = "Omega837" # YOUR-PASSWORD
-numberOfConsec = 6 # Number of consecutive
-ratio = 1.99 # Trigger ratio. Ex: (Bets below 2.00x.)
+# USERNAME = ""  # YOUR-EMAIL
+# PASSWORD = ""  # YOUR-PASSWORD
+numberOfConsec = 6  # Number of consecutive
+ratio = 1.99  # Trigger ratio. Ex: (Bets below 2.00x.)
 url = "https://www.maxbet.rs/ibet-web-client/#/home/game/spribe/aviator"
-basebet = 10 # Your Basebet - gets multiplied afterwards
+basebet = 10  # Your Basebet - gets multiplied afterwards
 maxMultiplier = 6
+
 
 def login():
     while(not checkLogin()):
         try:
             driver.switch_to.default_content()
             log_but = driver.find_element_by_xpath('//*[@id="app-loaded"]/div[3]/div[3]/div[1]/div[1]/div[1]/div[1]/input').click()
-            time.sleep(1)
+            time.sleep(1)   
             mail = driver.find_element_by_xpath('//*[@id="app-loaded"]/div[3]/div[3]/div[1]/div[1]/div[1]/div[1]/div/form/input[1]')
             password = driver.find_element_by_xpath('/html/body/div[1]/div[3]/div[3]/div[1]/div[1]/div[1]/div[1]/div/form/input[2]')
             mail.send_keys(USERNAME)

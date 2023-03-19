@@ -1,15 +1,17 @@
 from selenium import webdriver
+import telegram_sender as ts
 import time
 import json
+from constants import TOKEN, USERNAME, PASSWORD
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-TOKEN = "" # Bot Father Token
-USERNAME = "" # YOUR-EMAIL
-PASSWORD = "" # YOUR-PASSWORD
-numberOfConsec = 6 # Number of consecutive
+# TOKEN = "" # Bot Father Token
+# USERNAME = "" # YOUR-EMAIL
+# PASSWORD = "" # YOUR-PASSWORD
+numberOfConsec = 1 # Number of consecutive
 ratio = 1.99 # Trigger ratio. Ex: (Bets below 2.00x.)
 url = "https://www.maxbet.rs/ibet-web-client/#/home/game/spribe/aviator"
 basebet = 10 # Your Basebet - gets multiplied afterwards
@@ -197,6 +199,8 @@ def setup():
         options.add_argument("--log-level=3")
         global driver
         driver = webdriver.Chrome(options=options)
+        global sender
+        sender = ts.Sender(TOKEN)
         driver.get(url)
         time.sleep(10)
         driver.maximize_window()
