@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-# TOKEN = "" # Bot Father Token
+# TOKEN = "" # Bot Father Token 
 # USERNAME = "" # YOUR-EMAIL
 # PASSWORD = "" # YOUR-PASSWORD
 numberOfConsec = 1 # Number of consecutive
