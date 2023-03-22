@@ -7,8 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-# USERNAME = ""  # YOUR-EMAIL
-# PASSWORD = ""  # YOUR-PASSWORD 
+
 numberOfConsec = 6  # Number of consecutive
 ratio = 1.99  # Trigger ratio. Ex: (Bets below 2.00x.)
 url = "https://www.maxbet.rs/ibet-web-client/#/home/game/spribe/aviator"
