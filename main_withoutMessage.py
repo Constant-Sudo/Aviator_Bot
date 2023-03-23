@@ -53,7 +53,7 @@ def iframe():
             return None
         except Exception as e:
             print("iframe - Exception: " + str(e))
-    
+
 
 
 def get_blocks():
@@ -71,8 +71,8 @@ def get_blocks():
         except Exception as e:
             print("Exception: %s" + str(e))
             pass
-    
-    
+
+
 def checkTrigger(rates, ratio):
     string = "".join(["Y" if rate < ratio else "N" for rate in rates ])
     counter = 0
@@ -81,18 +81,14 @@ def checkTrigger(rates, ratio):
             counter += 1
         else: break
     return counter
-    
-    
+
+
 def send_msg(rates, numberOfConsec):
     try:
         sender.send_msg(f"!Alert Aviator has {numberOfConsec} blue in a row.")
         sender.send_msg(f"Last {len(rates)} round: " +  ", ".join([f"{rate}x" for rate in rates ]))
     except: 
         print("Message service has a problem. Check your tokens")
-    
-    
-    # <span ng-if="profileInfo.config != 'ug'" class="ng-binding ng-scope">mert</span>
-    # //*[@id="app-loaded"]/div[3]/div[3]/div[1]/div[2]/div[1]/div/div[1]/div[2]/span
 
 
 def getlastscore():
@@ -114,10 +110,7 @@ def setupbetting():
             button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, "/html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[3]/app-bet-controls/div/app-bet-control[1]/div/app-navigation-switcher/div/button[2]")))
             button.click()
             time.sleep(0.5)
-            # bet_button = driver.find_element_by_xpath("/html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[3]/app-bet-controls/div/app-bet-control[1]/div/app-navigation-switcher/div/button[1]").click()
-            # time.sleep(0.5)
-            # bet_button = driver.find_element_by_xpath("/html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[3]/app-bet-controls/div/app-bet-control[1]/div/app-navigation-switcher/div/button[2]").click()
-            # time.sleep(0.5)
+            
             # /html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[3]/app-bet-controls/div/app-bet-control[1]/div/app-navigation-switcher/div/button[2]
             print("1")
             bet_input = driver.find_element_by_xpath("/html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[3]/app-bet-controls/div/app-bet-control[1]/div/div[1]/div[1]/app-spinner/div/div[2]/input")
@@ -144,8 +137,6 @@ def setupbetting():
             print("Bet Setup - Exception: " + str(e))
 
 
-
-
 def placebet(value) -> bool:
     try:
         print("Placing Bet for: " + str(value))
@@ -155,7 +146,7 @@ def placebet(value) -> bool:
             bet_input.send_keys(Keys.BACKSPACE)
             time.sleep(0.1)
         bet_input.send_keys(str(value))
-        
+   
         time.sleep(0.2)
 
         place_input = driver.find_element_by_xpath("/html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[3]/app-bet-controls/div/app-bet-control[1]/div/div[1]/div[2]/button").click()
@@ -183,15 +174,13 @@ def tryclicking():
     for a in range(5):
         try:
             WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/consent/div/div/a"))).click()
-            # /html/body/div[1]/consent/div/div/a
-            # driver.find_element_by_xpath("/html/body/div[1]/consent/div/div/a").click()
             return None
         except Exception as e:
             print("tryclicking - Exception: " + str(e))
 
 
 def setup():
-    try: 
+    try:
         print("Setting up")
         options = webdriver.ChromeOptions()
         options.add_argument("--log-level=3")
@@ -213,27 +202,15 @@ def setup():
 
     return None
 
+
 print("Welcome to Aviator Tracker Bot..")
-# options = webdriver.ChromeOptions()
-# options.add_argument("--log-level=3")
-# driver = webdriver.Chrome(options=options)
-# driver.get(url)
-# time.sleep(10)
-# driver.maximize_window()
-# time.sleep(2)
-# tryclicking()
-# time.sleep(2)
-# login()
-# time.sleep(1)
-# iframe()
-# time.sleep(1)
-# setupbetting()
 
 setup()
 
 old_rates = []
 betting = False
 bettingCounter = 0
+
 while True:
     try:
         if checkLogin():
@@ -246,9 +223,8 @@ while True:
                     saveScore(float(rates[0]))
                 except Exception as e:
                     print("Saving Problem " + str(e))
-                
                 count = checkTrigger(rates, ratio)
-                    
+
                 if (count % (maxMultiplier + numberOfConsec)) >= numberOfConsec:
                     print(f"!Alert Aviator has {count} blue in a row. Betting now.")
                     betting = True
@@ -266,20 +242,6 @@ while True:
             driver.close()
             setup()
 
-            # driver.get(url)
-            # time.sleep(15)
-            # driver.refresh()
-            # time.sleep(4)
-            # login()
-            # time.sleep(14)
-            # setupbetting()
-            # time.sleep(5)
-
-    except:
+    except Exception as e:
+        print("Exception - " + str(e))
         pass
-
-
-
-# /html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[1]/app-stats-widget/div/div[1]/div/app-bubble-multiplier[0]
-# /html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[1]/app-stats-widget/div/div[1]/div/app-bubble-multiplier[1]
-# /html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[1]/app-stats-widget/div/div[1]/div/app-bubble-multiplier[2]
