@@ -8,14 +8,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-# TOKEN = "" # Bot Father Token 
-# USERNAME = "" # YOUR-EMAIL
-# PASSWORD = "" # YOUR-PASSWORD
 numberOfConsec = 1 # Number of consecutive
 ratio = 1.99 # Trigger ratio. Ex: (Bets below 2.00x.)
 url = "https://www.maxbet.rs/ibet-web-client/#/home/game/spribe/aviator"
 basebet = 10 # Your Basebet - gets multiplied afterwards
 maxMultiplier = 6
+
 
 def login():
     while(not checkLogin()):
@@ -218,20 +216,6 @@ def setup():
     return None
 
 print("Welcome to Aviator Tracker Bot..")
-# options = webdriver.ChromeOptions()
-# options.add_argument("--log-level=3")
-# driver = webdriver.Chrome(options=options)
-# driver.get(url)
-# time.sleep(10)
-# driver.maximize_window()
-# time.sleep(2)
-# tryclicking()
-# time.sleep(2)
-# login()
-# time.sleep(1)
-# iframe()
-# time.sleep(1)
-# setupbetting()
 
 setup()
 
@@ -271,20 +255,6 @@ while True:
             driver.close()
             setup()
 
-            # driver.get(url)
-            # time.sleep(15)
-            # driver.refresh()
-            # time.sleep(4)
-            # login()
-            # time.sleep(14)
-            # setupbetting()
-            # time.sleep(5)
-
     except:
         pass
 
-
-
-# /html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[1]/app-stats-widget/div/div[1]/div/app-bubble-multiplier[0]
-# /html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[1]/app-stats-widget/div/div[1]/div/app-bubble-multiplier[1]
-# /html/body/app-root/app-game/div/div[1]/div[2]/div/div[2]/div[1]/app-stats-widget/div/div[1]/div/app-bubble-multiplier[2]
