@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 
-numberOfConsec = 6  # Number of consecutive
+numberOfConsec = 1  # Number of consecutive
 ratio = 1.99  # Trigger ratio. Ex: (Bets below 2.00x.)
 url = "https://www.maxbet.rs/ibet-web-client/#/home/game/spribe/aviator"
 basebet = 10  # Your Basebet - gets multiplied afterwards
@@ -228,6 +228,13 @@ while True:
                 if (count % (maxMultiplier + numberOfConsec)) >= numberOfConsec:
                     print(f"!Alert Aviator has {count} blue in a row. Betting now.")
                     betting = True
+                    try:
+                        file_path = 'screenshots/bet_' + str(time.time())
+                        with open((file_path), 'wb') as file:
+                            a = driver.find_element_by_xpath("/html")
+                            file.write(a.screenshot_as_png)
+                    except Exception as e:
+                        print("Screenshot Exception - " + str(e))
                 if betting == True:
                     if rates[0] < ratio and bettingCounter < maxMultiplier:
                         bettingCounter += 1

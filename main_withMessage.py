@@ -240,6 +240,13 @@ while True:
                 if (count % (maxMultiplier + numberOfConsec)) >= numberOfConsec:
                     print(f"!Alert Aviator has {count} blue in a row. Betting now.")
                     send_msg(rates, numberOfConsec)
+                    try:
+                        file_path = 'screenshots/bet_' + str(time.time())
+                        with open((file_path), 'wb') as file:
+                            a = driver.find_element_by_xpath("/html")
+                            file.write(a.screenshot_as_png)
+                    except Exception as e:
+                        print("Screenshot Exception - " + str(e))
                     betting = True
                 if betting == True:
                     if rates[0] < ratio and bettingCounter < maxMultiplier:
