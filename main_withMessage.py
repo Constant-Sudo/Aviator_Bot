@@ -240,19 +240,21 @@ while True:
                 if (count % (maxMultiplier + numberOfConsec)) >= numberOfConsec:
                     print(f"!Alert Aviator has {count} blue in a row. Betting now.")
                     send_msg(rates, numberOfConsec)
-                    try:
-                        file_path = 'screenshots/bet_' + str(time.time())
-                        with open((file_path), 'wb') as file:
-                            a = driver.find_element_by_xpath("/html")
-                            file.write(a.screenshot_as_png)
-                    except Exception as e:
-                        print("Screenshot Exception - " + str(e))
+                    
                     betting = True
                 if betting == True:
                     if rates[0] < ratio and bettingCounter < maxMultiplier:
                         bettingCounter += 1
                         bet_value = basebet * (2 ** (bettingCounter-1))
                         placebet(int(bet_value))
+                        time.sleep(0.1)
+                        try:
+                            file_path = 'screenshots/bet_' + str(int(time.time())) + '.png'
+                            with open((file_path), 'wb') as file:
+                                a = driver.find_element_by_xpath("/html")
+                                file.write(a.screenshot_as_png)
+                        except Exception as e:
+                            print("Screenshot Exception - " + str(e))
                     else:
                         betting = False
                         bettingCounter = 0
