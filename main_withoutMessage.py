@@ -74,7 +74,8 @@ def get_blocks():
 
 
 def checkTrigger(rates, ratio):
-    string = "".join(["Y" if rate =< ratio else "N" for rate in rates ])
+    
+    string = "".join(["Y" if rate <= ratio else "N" for rate in rates ])
     counter = 0
     for i in string:
         if i == "Y":
