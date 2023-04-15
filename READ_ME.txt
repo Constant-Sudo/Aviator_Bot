@@ -3,7 +3,6 @@
 2- You have to install requirement Libraries. Please run this command in the current folder.
 pip3 install -r requirements.txt
 
-
 5- You can adjust the settings in the main.py(Email-password-Token).
 
 6- Open the terminal, run and enjoy it ! :)

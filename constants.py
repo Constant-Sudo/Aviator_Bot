@@ -1,3 +1,3 @@
-TOKEN = ""  # Bot Father Token
-USERNAME = ""  # YOUR-EMAIL
-PASSWORD = ""  # YOUR-PASSWORD
+TOKEN = ""      # Bot Father Token
+USERNAME = ""   # YOUR-EMAIL
+PASSWORD = ""   # YOUR-PASSWORD
